@@ -59,7 +59,10 @@ class MainState extends State<Main> {
                 width: 300,
                 child: new RaisedButton(
                   child: new Text('SIGN OUT'),
-                  onPressed: () {},
+                  onPressed: () {
+                    SharePreference.clear();
+                    Navigator.pushReplacementNamed(context, "/");
+                  },
                 ),
               ),
             ),

@@ -133,8 +133,7 @@ class ProfileState extends State<Profile> {
           ),
           Container(
             child: RaisedButton(
-              child: Text("Save", style: TextStyle(color: Colors.white)),
-              color: Theme.of(context).accentColor,
+              child: Text("Save"),
               onPressed: () async {
                 if (!_formKey.currentState.validate()) {
                   Scaffold.of(context).showSnackBar(SnackBar(
@@ -168,7 +167,7 @@ class ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Home")),
+        appBar: AppBar(title: Text("Profile")),
         body: Builder(builder: (BuildContext context) {
           return buildUi(context);
         }));

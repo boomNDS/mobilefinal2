@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:mobilefinal/service/shared_preference.dart';
 import 'package:mobilefinal/service/file.dart';
 import 'package:mobilefinal/service/friend.dart';
+import 'package:mobilefinal/service/api.dart';
 import 'package:http/http.dart' as http;
 
 class Friend extends StatefulWidget {
@@ -13,12 +14,34 @@ class Friend extends StatefulWidget {
     return FriendState();
   }
 }
+
 class FriendState extends State<Friend> {
-  List list = List();
-  var isLoading = false;
+  var usersapi = new List<Userapi>();
+  _getUsers() {
+    API.getUsers().then((response) {
+      setState(() {
+        Iterable list = json.decode(response.body);
+        usersapi = list.map((model) => Userapi.fromJson(model)).toList();
+      });
+    });
+  }
+
+  initState() {
+    super.initState();
+    _getUsers();
+  }
+
+  dispose() {
+    super.dispose();
+  }
 
   Widget buildUi(BuildContext context) {
-    return Center(child: Text("data"));
+    return ListView.builder(
+      itemCount: usersapi.length,
+      itemBuilder: (context, index) {
+        return ListTile(title: Text(usersapi[index].id.toString()+" :"+usersapi[index].name+"\n"+usersapi[index].email+"\n"+usersapi[index].phone));
+      },
+    );
   }
 
   @override
@@ -28,17 +51,5 @@ class FriendState extends State<Friend> {
         body: Builder(builder: (BuildContext context) {
           return buildUi(context);
         }));
-  }
-}
-
-class Friendinfo {
-  final int id;
-
-  Friendinfo({ this.id});
-
-  factory Friendinfo.fromJson(Map<String, dynamic> json) {
-    return Friendinfo(
-      id: json['id'],
-    );
   }
 }

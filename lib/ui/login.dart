@@ -77,14 +77,6 @@ class LoginState extends State<Login> {
                   List<User> users = await DBProvider.db.getAllUser();
                   bool check = false;
                   for (int i = 0; i < users.length; i++) {
-                    print("userid " +
-                        users[i].userid +
-                        " == " +
-                        userControl.text);
-                    print("pass " +
-                        users[i].password +
-                        " == " +
-                        passControl.text);
 
                     if (users[i].userid == userControl.text &&
                         users[i].password == passControl.text) {
