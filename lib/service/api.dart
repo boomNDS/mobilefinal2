@@ -8,4 +8,8 @@ class API {
     var url = baseUrl + "/users";
     return http.get(url);
   }
+    static Future getTodouser(int id) {
+    var url = baseUrl + "/todos?userId="+id.toString();
+    return http.get(url);
+  }
 }

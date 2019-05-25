@@ -7,6 +7,7 @@ import 'package:mobilefinal/service/file.dart';
 import 'package:mobilefinal/service/friend.dart';
 import 'package:mobilefinal/service/api.dart';
 import 'package:http/http.dart' as http;
+import 'package:mobilefinal/ui/todolist.dart';
 
 class Friend extends StatefulWidget {
   @override
@@ -39,7 +40,22 @@ class FriendState extends State<Friend> {
     return ListView.builder(
       itemCount: usersapi.length,
       itemBuilder: (context, index) {
-        return ListTile(title: Text(usersapi[index].id.toString()+" :"+usersapi[index].name+"\n"+usersapi[index].email+"\n"+usersapi[index].phone));
+        return ListTile(
+          title: Text(usersapi[index].id.toString() +
+              " :" +
+              usersapi[index].name +
+              "\n" +
+              usersapi[index].email +
+              "\n" +
+              usersapi[index].phone +
+              "\n" +
+              usersapi[index].website),
+          onTap: () {
+            Navigator.of(context).push(new MaterialPageRoute(
+                builder: (BuildContext context) =>
+                    new Todo(id: usersapi[index].id)));
+          },
+        );
       },
     );
   }
