@@ -4,18 +4,18 @@ import 'package:mobilefinal/db/db.dart';
 import 'package:mobilefinal/service/shared_preference.dart';
 import 'package:mobilefinal/service/user.dart';
 
-class LoginScreen extends StatefulWidget {
+class Login extends StatefulWidget {
   @override
-  Myform createState() {
-    return Myform();
+  LoginState createState() {
+    return LoginState();
   }
 }
 
-class Myform extends State<LoginScreen> {
+class LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
-
   TextEditingController userControl = new TextEditingController();
   TextEditingController passControl = new TextEditingController();
+  @override
   Widget buildUi(BuildContext context) {
     return Form(
       key: _formKey,
@@ -26,7 +26,7 @@ class Myform extends State<LoginScreen> {
               "https://cdn-images-1.medium.com/max/1200/0*MXYivtrvfMI2nZXU.",
               height: 232,
             ),
-            margin: EdgeInsets.fromLTRB(40, 40, 40, 0),
+            margin: EdgeInsets.fromLTRB(50, 50, 50, 0),
           ),
           Container(
             child: TextFormField(
@@ -44,7 +44,7 @@ class Myform extends State<LoginScreen> {
                 }
               },
             ),
-            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+            margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
           ),
           Container(
             child: TextFormField(
@@ -91,7 +91,7 @@ class Myform extends State<LoginScreen> {
                       check = true;
                       SharePreference.id = users[i].id;
                       SharePreference.setAttr(users[i]);
-                      Navigator.pushReplacementNamed(context, "/Main");
+                      Navigator.pushReplacementNamed(context, "/main");
                     }
                   }
                   if (!check) {
@@ -107,30 +107,21 @@ class Myform extends State<LoginScreen> {
           Align(
               alignment: Alignment.centerRight,
               child: Container(
-                child: GestureDetector(
-                  child: Text("Register New Account",
-                      style: TextStyle(color: Colors.green),
-                      textDirection: TextDirection.ltr),
-                  onTap: () {
-                    Navigator.pushNamed(context, "/regist");
+                child: FlatButton(
+                  child: Text("Register New Account"),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/regis");
                   },
                 ),
-                margin: EdgeInsets.fromLTRB(0, 10, 15, 0),
+                // margin: EdgeInsets.fromLTRB(0, 10, 15, 0),
               ))
         ],
       ),
     );
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Login")),
-        body: Builder(
-            // Create an inner BuildContext so that the onPressed methods
-            // can refer to the Scaffold with Scaffold.of().
-            builder: (BuildContext context) {
-          return buildUi(context);
-        }));
+        appBar: AppBar(title: Text("Login")), body: buildUi(context));
   }
 }

@@ -3,6 +3,8 @@ import 'dart:async';
 
 import 'package:mobilefinal/service/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mobilefinal/service/file.dart';
+
 
 class SharePreference{
     static int id;
