@@ -3,6 +3,7 @@ import 'package:mobilefinal/ui/login.dart';
 import 'package:mobilefinal/ui/register.dart';
 import 'package:mobilefinal/ui/main.dart';
 import 'package:mobilefinal/ui/friendlist.dart';
+import 'package:mobilefinal/ui/profile.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         "/regis": (context) => Register(),
         "/main": (context) => Main(),
         "/friend": (context) => Friend(),
+        "/profile": (context) => Profile(),
       },
     );
   }

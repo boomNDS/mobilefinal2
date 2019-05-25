@@ -37,7 +37,9 @@ class MainState extends State<Main> {
                 width: 300,
                 child: new RaisedButton(
                   child: new Text('PROFILE SETUP'),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/profile");
+                  },
                 ),
               ),
             ),

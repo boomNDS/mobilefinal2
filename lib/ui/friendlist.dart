@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:mobilefinal/service/shared_preference.dart';
 import 'package:mobilefinal/service/file.dart';
+import 'package:mobilefinal/service/friend.dart';
 import 'package:http/http.dart' as http;
 
 class Friend extends StatefulWidget {
@@ -12,26 +13,12 @@ class Friend extends StatefulWidget {
     return FriendState();
   }
 }
-
 class FriendState extends State<Friend> {
   List list = List();
   var isLoading = false;
 
   Widget buildUi(BuildContext context) {
-    return FutureBuilder<List<Friendinfo>>(
-        future: getAllFriend(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasError) {
-              return Text("Error");
-            } else {
-              return Center(child: Text("s"));
-            }
-          } else {
-            return Center(child: CircularProgressIndicator());
-          }
-        },
-      );
+    return Center(child: Text("data"));
   }
 
   @override
